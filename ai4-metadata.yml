@@ -2,61 +2,93 @@ metadata_version: 2.0.0
 title: WITOIL-for-iMagine
 summary: "Medslik-II Oil fate lagrangian model"
 description: |-
-  witoil_for_imagine is an application using the DEEPaaS API.
-  Medslik-II Oil fate lagrangian model
-# doi: http://add-some-DOI-url.com
+  WITOIL for iMagine is an application using the DEEPaaS API for prediction of transport and transformation of actual or hypothetical oil spills in the oceans using Medslik-II model.
+  
+  The oil spill model code MEDSLIK-II is a freely available community model. It is designed to be used to predict the transport and weathering of an oil spill, using a lagrangian representation of the oil slick.
+  
+  As an interactive system, WITOIL requires the input of data for atmospheric wind, sea surface temperature, and sea currents. The atmospheric wind data are provided by the European Centre for Medium-Range Weather Forecasts (ECMWF), at 0.125 horizontal and 6-h temporal resolution. The ocean current data are obtained from the Copernicus Marine Environment Monitoring Service (CMEMS) with horizontal resolution of with common resolutions of 1/16° (approximately 6 km) or 1/8° (approximately 12 km), depending on the specific region.
+
+  WITOIL for iMagine provides users with the spatial-temporal distributions of oil concentration at the sea surface and coastline, and the components of oil mass balance. WITOIL output consists of graphics and animations available through web browser.
+  
+
+  To use this application, users must first register with two data services:
+   - Copernicus Marine Environment Monitoring Service (CMEMS)
+   - European Centre for Medium-Range Weather Forecasts (ECMWF)
+
+  Both of which provide essential reanalysis data for the model.
+  
+  These registrations are required to download the necessary datasets and ensure compatibility with the model's input.
+  
+  To proceed, the user must follow these steps:
+
+  >> Step 1 - Register within CMEMS:
+
+   To obtain oceanographic data for the simulation, a Copernicus username and password are required.
+
+   If the user does not already have an account, they can register here: https://data.marine.copernicus.eu/register?redirect=%2Fproducts
+   <img class='fit', src='https://raw.githubusercontent.com/ai4os-hub/WITOIL-for-iMagine/main/data/tutorial_images/CMEMS.png'/>
+  
+   Once the account is created, the user should store their username and password for future use.
+
+
+  >> Step 2 - Register and accept terms within Climate Data Store from ECMWF
+
+   The next step requires the token from each user to access ERA5 reanalysis data from ECMWF.
+
+   To create an account, the user can go to this link: https://accounts.ecmwf.int/auth/realms/ecmwf/protocol/openid-connect/auth?client_id=cds&scope=openid%20email&response_type=code&redirect_uri=https%3A%2F%2Fcds.climate.copernicus.eu%2Fapi%2Fauth%2Fcallback%2Fkeycloak&state=LnmYV9xerVidknPojo3UgHrUPSxQzlbc6x8GMlNWQis&code_challenge=KvF-CRFr9d7MJM4TMUq3sQOvBQZYIie4bB6dLJsSbtQ&code_challenge_method=S256
+   
+   After completing the registration, the user will have access to the Climate Data Store. From there, they can retrieve their token from their user profile at: https://cds.climate.copernicus.eu/profile
+   
+   The token will be located under the "Personal Access Token" section.
+   <img class='fit', src='https://raw.githubusercontent.com/ai4os-hub/WITOIL-for-iMagine/main/data/tutorial_images/access_token_ERA5.png'/>
+
+   The last step, which is somewhat hidden, is to accept the terms of use for the dataset. The user needs to navigate to the ERA5 single layer page: https://cds.climate.copernicus.eu/datasets/reanalysis-era5-pressure-levels?tab=download
+   
+   The user needs to scroll down to the bottom of the page until the terms of usage appear, and then they should accept them.
+   <img class='fit', src='https://raw.githubusercontent.com/ai4os-hub/WITOIL-for-iMagine/main/data/tutorial_images/Terms_of_usage_ERA5.png'/>
+
+
+   RUNNING WITOIL FOR iMAGINE
+
+   After obtaining the necessary registrations, the user must fill in the fields correctly to run the model. This includes entering their username, password, and token in the appropriate fields, as well as providing the location and characteristics of the oil spill they wish to simulate.
+
+   Once all the information is entered, the user simply needs to click the "Run" button to execute the simulation.
+
+   After running the application, the results will be displayed through graphics and animations, allowing for an analysis of oil dispersion in the environment. The user will see graphical representations of oil concentrations over time, as well as vectors indicating the direction and intensity of currents and winds, as represented below. These results are crucial for understanding the potential impact of an oil spill and assisting in decision-making for damage mitigation.
+   <img class='fit', src='https://raw.githubusercontent.com/ai4os-hub/WITOIL-for-iMagine/main/data/tutorial_images/oil_concentration_algeria.gif'/>
+ 
+
+  **References**
+  1. De Dominicis M., N. Pinardi, G. Zodiatis, R. Lardner. [MEDSLIK-II, a Lagrangian marine surface oil spill model for short-term forecasting - Part 1: Theory](https://doi.org/10.5194/gmd-6-1851-2013). Geosci. Model Dev., 6, 1851-1869, 2013.
+  2. De Dominicis M., N. Pinardi, G. Zodiatis, R. Archetti [MEDSLIK-II, a Lagrangian marine surface oil spill model for short-term forecasting - Part 2: Numerical simulations and validations](https://doi.org/10.5194/gmd-6-1871-2013). Geosci. Model Dev., 6, 1851-1869, 2013.
+
+doi:
+ - https://doi.org/10.5194/gmd-6-1851-2013
+ - https://doi.org/10.5194/gmd-6-1871-2013
 dates:
   created: 2024-09-13
-  updated: 2024-09-13
+  updated: 2024-09-24
 links:
   ai4_template: ai4-template-adv/2.0.1
   source_code: https://github.com/ai4os-hub/witoil-for-imagine
   docker_image: ai4oshub/witoil-for-imagine
-  # documentation: http://add-some-documentation.com
-  # dataset: http://add-some-url-pointing-to-your-dataset.com
-  # weights: http://add-some-weights-url.com
-  # citation: http://add-some-DOI-url.com
-  # base_model: http://add-some-link-to-another-model.com
-#tags:        # required property, add user-defined tags that you consider relevant
-  # - deep learning
-#tasks:       # required property, uncomment together with relevant items
-  # - Computer Vision
-  # - Natural Language Processing
-  # - Time Series
-  # - Recommender Systems
-  # - Anomaly Detection
-  # - Regression
-  # - Classification
-  # - Clustering
-  # - Dimensionality Reduction
-  # - Generative Models
-  # - Graph Neural Networks
-  # - Optimization
-  # - Reinforcement Learning
-  # - Transfer Learning
-  # - Uncertainty Estimation
-  # - Other
-#categories:  # required property, uncomment together with relevant items
-  # - AI4 trainable
-  # - AI4 pre trained
-  # - AI4 inference
-  # - AI4 tools
-#libraries:   # required property, uncomment together with relevant items
-  # - TensorFlow
-  # - PyTorch
-  # - Keras
-  # - Scikit-learn
-  # - XGBoost
-  # - LightGBM
-  # - CatBoost
-  # - Other
-#data-type:   # optional, uncomment together with relevant items
-  # - Image
-  # - Text
-  # - Time Series
-  # - Tabular
-  # - Graph
-  # - Audio
-  # - Video
-  # - Other
+  documentation: https://github.com/ai4os-hub/witoil-for-imagine/docs
+  base_model: https://www.medslik-ii.org/
+tags:
+  - numerical modeling
+  - parameter optimization
+  - machine learning
+tasks:
+  - Time Series
+  - Optimization
+categories:
+  - AI4 pre trained
+  - AI4 inference
+libraries:
+  - Other
+data-type:
+  - Image
+  - Text
+  - Time Series
+
   
