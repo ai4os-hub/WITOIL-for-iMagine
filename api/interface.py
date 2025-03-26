@@ -150,7 +150,7 @@ class MedslikII:
 
 
         if config["download"]["download_bath"]:
-            output_path = "data/gebco/"
+            output_path = "WITOIL_iMagine/data/gebco/"
             output_name = output_path + "GEBCO_slice_{}_{}_mdk.nc".format(
                 identifier, config["simulation"]["name"]
             )
